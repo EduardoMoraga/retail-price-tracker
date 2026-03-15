@@ -1,0 +1,22 @@
+[
+  {"id": "SAM-TV-55", "name": "Samsung Crystal UHD 55\"", "brand": "Samsung", "category": "TV", "base_price": 499990},
+  {"id": "SAM-TV-65", "name": "Samsung Neo QLED 65\"", "brand": "Samsung", "category": "TV", "base_price": 899990},
+  {"id": "SAM-PHN-S24", "name": "Samsung Galaxy S24", "brand": "Samsung", "category": "Smartphone", "base_price": 799990},
+  {"id": "SAM-TAB-S9", "name": "Samsung Galaxy Tab S9", "brand": "Samsung", "category": "Tablet", "base_price": 549990},
+  {"id": "LG-TV-55", "name": "LG OLED evo 55\"", "brand": "LG", "category": "TV", "base_price": 749990},
+  {"id": "LG-TV-65", "name": "LG NanoCell 65\"", "brand": "LG", "category": "TV", "base_price": 649990},
+  {"id": "LG-PHN-V60", "name": "LG Gram 16\" Laptop", "brand": "LG", "category": "Laptop", "base_price": 1099990},
+  {"id": "LG-AUD-TF8", "name": "LG TONE Free FP8 Earbuds", "brand": "LG", "category": "Headphones", "base_price": 89990},
+  {"id": "APL-PHN-15", "name": "iPhone 15 Pro", "brand": "Apple", "category": "Smartphone", "base_price": 1199990},
+  {"id": "APL-PHN-15S", "name": "iPhone 15", "brand": "Apple", "category": "Smartphone", "base_price": 899990},
+  {"id": "APL-TAB-AIR", "name": "iPad Air M2", "brand": "Apple", "category": "Tablet", "base_price": 749990},
+  {"id": "APL-AUD-MAX", "name": "AirPods Max", "brand": "Apple", "category": "Headphones", "base_price": 449990},
+  {"id": "XIA-PHN-14", "name": "Xiaomi 14 Ultra", "brand": "Xiaomi", "category": "Smartphone", "base_price": 599990},
+  {"id": "XIA-PHN-RN13", "name": "Xiaomi Redmi Note 13 Pro", "brand": "Xiaomi", "category": "Smartphone", "base_price": 249990},
+  {"id": "XIA-TAB-P6", "name": "Xiaomi Pad 6", "brand": "Xiaomi", "category": "Tablet", "base_price": 299990},
+  {"id": "XIA-AUD-4P", "name": "Xiaomi Buds 4 Pro", "brand": "Xiaomi", "category": "Headphones", "base_price": 79990},
+  {"id": "HP-LAP-ENV", "name": "HP Envy x360 15\"", "brand": "HP", "category": "Laptop", "base_price": 899990},
+  {"id": "HP-LAP-SPE", "name": "HP Spectre x360 14\"", "brand": "HP", "category": "Laptop", "base_price": 1299990},
+  {"id": "HP-LAP-VIC", "name": "HP Victus 15\" Gaming", "brand": "HP", "category": "Laptop", "base_price": 749990},
+  {"id": "HP-TAB-P11", "name": "HP Chromebook x2 11\"", "brand": "HP", "category": "Tablet", "base_price": 399990}
+]
