@@ -263,7 +263,15 @@ with tab1:
 with tab2:
     st.markdown("## Price Monitor")
 
-    products = sorted(fdf["product"].unique())
+    # Category → Product cascading filter
+    tab2_categories = sorted(fdf["category"].unique())
+    selected_category = st.selectbox("Select a category", tab2_categories, index=0 if tab2_categories else None)
+
+    if selected_category:
+        products = sorted(fdf[fdf["category"] == selected_category]["product"].unique())
+    else:
+        products = sorted(fdf["product"].unique())
+
     selected_product = st.selectbox("Select a product", products, index=0 if products else None)
 
     if selected_product:
@@ -426,9 +434,16 @@ with tab3:
 with tab4:
     st.markdown("## Competitive Intelligence")
 
+    # Category filter for this tab
+    tab4_cat = st.selectbox("Filter by category", ["All Categories"] + sorted(fdf["category"].unique()), key="tab4_cat")
+    if tab4_cat != "All Categories":
+        fdf_ci = fdf[fdf["category"] == tab4_cat]
+    else:
+        fdf_ci = fdf
+
     # Price gap heatmap
-    st.markdown("### Price vs Market Average (Retailer x Product)")
-    pvm = price_vs_market_by_retailer(fdf)
+    st.markdown(f"### Price vs Market Average (Retailer x Product) — {tab4_cat}")
+    pvm = price_vs_market_by_retailer(fdf_ci)
     if not pvm.empty:
         heat_pivot = pvm.pivot_table(
             index="product", columns="retailer",
@@ -452,7 +467,7 @@ with tab4:
 
     # Price leader bar chart
     st.markdown("### Price Leadership by Brand")
-    leaders = price_leader_analysis(fdf)
+    leaders = price_leader_analysis(fdf_ci)
     if not leaders.empty:
         fig_leader = px.bar(
             leaders,
@@ -468,7 +483,7 @@ with tab4:
 
     # Price gap matrix
     st.markdown("### Retailer vs Retailer Price Gap Matrix")
-    gap_mx = price_gap_matrix(fdf)
+    gap_mx = price_gap_matrix(fdf_ci)
     if not gap_mx.empty:
         fig_mx = px.imshow(
             gap_mx.values.astype(float),
@@ -485,7 +500,7 @@ with tab4:
 
     # Promotional effectiveness
     st.markdown("### Promotional Effectiveness")
-    promo_eff = promotional_effectiveness(fdf)
+    promo_eff = promotional_effectiveness(fdf_ci)
     if not promo_eff["summary"].empty:
         st.dataframe(
             promo_eff["summary"][[

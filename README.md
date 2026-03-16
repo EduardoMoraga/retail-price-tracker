@@ -1,9 +1,12 @@
 # Retail Price Intelligence Tracker
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://retail-price-tracker-2zmycjminl99dbvp8sevpn.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30%2B-FF4B4B.svg)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+**[Live Demo](https://retail-price-tracker-2zmycjminl99dbvp8sevpn.streamlit.app/)**
 
 **A production-grade competitive pricing intelligence platform for LATAM electronics retail, featuring automated ETL, multi-method anomaly detection, and actionable trade marketing insights.**
 
