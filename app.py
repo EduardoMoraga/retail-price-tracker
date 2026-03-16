@@ -197,7 +197,36 @@ else:
 # ===================================================================
 
 st.markdown("# Retail Price Intelligence Tracker")
-st.markdown("*Real-time competitive pricing monitoring for LATAM electronics retail*")
+st.markdown("*Competitive pricing monitoring for LATAM electronics retail*")
+
+with st.expander("ℹ️ About this project — What it does and how it works", expanded=False):
+    st.markdown("""
+**What is this?**
+A competitive pricing intelligence platform that monitors product prices across 5 major LATAM retailers (Falabella, MercadoLibre, Paris, Ripley, Amazon) for 20 electronics products from Samsung, LG, Apple, Xiaomi, and HP.
+
+**Data disclaimer:**
+> ⚠️ All pricing data is **synthetically generated** to simulate realistic LATAM retail pricing patterns. No real retailer data was scraped or used. Prices are in Chilean Pesos (CLP) and reflect realistic market ranges for each product category.
+
+**How the ETL Pipeline works:**
+1. **Extract** — Simulates data ingestion from 5 retailer APIs/scrapers (in production, this would connect to real scraping infrastructure)
+2. **Transform** — Validates data quality, calculates rolling averages (7-day, 30-day), price indices (base 100), competitive positioning (cheapest retailer per product per day), and discount analysis
+3. **Load** — Stores everything in a SQLite database with 5 tables: `prices`, `price_metrics`, `product_catalog`, `alerts`, `pipeline_log`
+
+**Anomaly Detection — 4-method ensemble:**
+- **Z-Score**: Flags prices that deviate more than 2.5 standard deviations from the rolling mean. *Use case: detecting sudden pricing errors.*
+- **IQR (Interquartile Range)**: Flags prices outside 1.5× the interquartile range of recent data. *Use case: identifying outliers that Z-Score might miss in skewed distributions.*
+- **Isolation Forest** (scikit-learn): An unsupervised ML algorithm that isolates anomalies by randomly partitioning data — anomalies require fewer partitions to isolate. *Use case: detecting complex multi-variable anomalies.*
+- **Rate of Change**: Flags sudden price drops >15% in a single day. *Use case: catching flash sales, competitor undercutting, or pricing errors.*
+- **Ensemble rule**: A price is flagged as anomaly only if **2 or more methods agree** — this reduces false positives significantly.
+
+**Competitive Intelligence:**
+- **Price Gap Heatmap**: Shows which retailer is above/below market average for each product (green = cheaper, red = more expensive)
+- **Price Leadership**: Measures what % of days each retailer was the cheapest for each brand — answers "who wins the price war?"
+- **Promotional Effectiveness**: Analyzes discount depth, frequency, and price recovery time after promotions
+
+**Business value:** In trade marketing, knowing *who is cheapest, when, and by how much* is the difference between winning and losing shelf space. This tool automates that intelligence.
+    """)
+
 
 # KPI row
 kpis = generate_kpi_cards(fdf, f_alerts)
